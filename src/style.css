@@ -242,7 +242,7 @@ button {
 }
 
 .two-up {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .field {
@@ -435,10 +435,6 @@ input[type='range']::-webkit-slider-thumb {
   .topbar {
     padding-left: 18px;
     padding-right: 18px;
-  }
-
-  .two-up {
-    grid-template-columns: 1fr;
   }
 
   .content {
