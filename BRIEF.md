@@ -1,6 +1,6 @@
 
 # Project Brief
-A mobile-first web experience for urgent care patients to check in and submit insurance information. The mobile check-in process includes collecting patient data, selecting symptoms and pain, and uploading insurance information. Mobile interface should be simple, easy to navigate, and comforting for customers that are likely under duress. 
+A mobile-first web experience for urgent care patients to check in and submit insurance information. The mobile check-in process includes collecting patient data, selecting symptoms and pain, and uploading insurance information. Mobile interface should be simple, easy to navigate, and comforting for customers that are likely under duress.
 
 ## Tech
 - Create a new Vue project
