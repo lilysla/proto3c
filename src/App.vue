@@ -43,8 +43,10 @@ const form = reactive({
   phone: '',
   email: '',
   symptoms: [],
+  customSymptoms: '',
   pain: 4,
   preexistingIllnesses: [],
+  customHealthHistory: '',
   currentMedications: [],
   insuranceProvider: '',
   memberId: '',
@@ -69,9 +71,9 @@ const progress = computed(() => {
     form.dateOfBirth,
     form.phone,
     form.email,
-    form.symptoms.length > 0,
+    form.symptoms.length > 0 || form.customSymptoms.trim(),
     form.pain > 0,
-    form.preexistingIllnesses.length > 0,
+    form.preexistingIllnesses.length > 0 || form.customHealthHistory.trim(),
     form.insuranceProvider,
     form.memberId,
     form.comments.trim(),
@@ -97,7 +99,9 @@ function validateForm() {
   if (!form.dateOfBirth) errors.dateOfBirth = 'Please share your date of birth.'
   if (!form.phone.trim()) errors.phone = 'Please add a phone number.'
   if (!form.email.trim()) errors.email = 'Please add your email address.'
-  if (!form.symptoms.length) errors.symptoms = 'Tell us what symptoms you are having.'
+  if (!form.symptoms.length && !form.customSymptoms.trim()) {
+    errors.symptoms = 'Tell us what symptoms you are having.'
+  }
   if (!form.insuranceProvider.trim()) errors.insuranceProvider = 'Please add your insurance provider.'
   if (!form.memberId.trim()) errors.memberId = 'Please add your member ID.'
 
@@ -202,6 +206,15 @@ function submitForm() {
                 {{ symptom }}
               </button>
             </div>
+
+            <label class="field top-space">
+              <span>Other symptoms</span>
+              <textarea
+                v-model="form.customSymptoms"
+                rows="3"
+                placeholder="Describe any symptoms not listed above."
+              ></textarea>
+            </label>
             <small v-if="errors.symptoms" class="error">{{ errors.symptoms }}</small>
           </section>
 
@@ -258,6 +271,15 @@ function submitForm() {
                   {{ medication }}
                 </button>
               </div>
+            </label>
+
+            <label class="field top-space">
+              <span>Additional health history</span>
+              <textarea
+                v-model="form.customHealthHistory"
+                rows="3"
+                placeholder="Share any relevant past conditions, recent illnesses, or medical details."
+              ></textarea>
             </label>
           </section>
 
